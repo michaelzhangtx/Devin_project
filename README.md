@@ -126,6 +126,21 @@ python rag_system.py query "What are best practices for production AI according 
 - **Persistent storage**: Vector store is saved locally and can be reused
 - **Accurate responses**: Uses actual document content rather than making up information
 
+## Testing & Verification
+
+Before setting up your OpenAI API key, you can verify that the core components work:
+
+```bash
+python test_pdf_loading.py
+```
+
+This will test:
+- All required dependencies are installed
+- PDFs can be loaded and text extracted
+- Text splitting functionality works correctly
+
+The test does NOT require an OpenAI API key and verifies the system is ready for use.
+
 ## Troubleshooting
 
 ### API Key Issues
