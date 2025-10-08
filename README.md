@@ -31,9 +31,31 @@ cp .env.example .env
 
 ## Usage
 
-### Option 1: Interactive Mode (Recommended)
+### Option 1: Web Interface (Streamlit) ⭐ Recommended
 
-Run the interactive demo for a conversational experience:
+Run the Streamlit web application for a modern browser-based interface:
+
+```bash
+streamlit run streamlit_app.py
+```
+
+This will:
+- Open a web browser automatically with the RAG system interface
+- Automatically initialize the system on first question
+- Provide an intuitive UI for asking questions
+- Display answers with expandable source document sections
+- Show system status and example questions in the sidebar
+
+**Features:**
+- Modern, responsive web interface
+- Real-time question answering
+- Source document citations with expandable details
+- Example questions for quick testing
+- Clear error messages and setup instructions
+
+### Option 2: Interactive Terminal Mode
+
+Run the interactive demo for a conversational terminal experience:
 
 ```bash
 python interactive_demo.py
@@ -43,9 +65,9 @@ This will:
 - Automatically initialize the system on first run
 - Allow you to ask multiple questions in a row
 - Show answers with source attributions
-- Provide a user-friendly interface
+- Provide a user-friendly terminal interface
 
-### Option 2: Command Line Mode
+### Option 3: Command Line Mode
 
 #### Step 1: Initialize the RAG System
 
