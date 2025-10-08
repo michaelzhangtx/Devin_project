@@ -8,6 +8,7 @@ from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
+import chromadb
 
 load_dotenv()
 
@@ -123,8 +124,9 @@ def main():
         
         print("Loading existing vector store...")
         embeddings = OpenAIEmbeddings()
+        client = chromadb.PersistentClient(path=rag.persist_directory)
         rag.vectorstore = Chroma(
-            persist_directory=rag.persist_directory,
+            client=client,
             embedding_function=embeddings
         )
         rag.setup_qa_chain()

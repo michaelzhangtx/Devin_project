@@ -4,6 +4,7 @@ from pathlib import Path
 from rag_system import PDFRAGSystem
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
+import chromadb
 
 st.set_page_config(
     page_title="PDF RAG System",
@@ -80,8 +81,9 @@ def initialize_rag_system():
         else:
             with st.spinner("🔄 Loading existing vector database..."):
                 embeddings = OpenAIEmbeddings()
+                client = chromadb.PersistentClient(path=rag.persist_directory)
                 rag.vectorstore = Chroma(
-                    persist_directory=rag.persist_directory,
+                    client=client,
                     embedding_function=embeddings
                 )
                 rag.setup_qa_chain()

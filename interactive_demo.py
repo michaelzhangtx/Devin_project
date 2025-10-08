@@ -34,11 +34,13 @@ def main():
         print("Loading existing vector database...")
         from langchain_openai import OpenAIEmbeddings
         from langchain_community.vectorstores import Chroma
+        import chromadb
         
         try:
             embeddings = OpenAIEmbeddings()
+            client = chromadb.PersistentClient(path=rag.persist_directory)
             rag.vectorstore = Chroma(
-                persist_directory=rag.persist_directory,
+                client=client,
                 embedding_function=embeddings
             )
             rag.setup_qa_chain()
